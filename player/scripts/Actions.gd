@@ -9,6 +9,8 @@ class Action:
 	var elapsed_time: float
 	var delta: float
 
+
+
 func capture_input(action: String, delta: float):
 	elapsed_time += delta
 	

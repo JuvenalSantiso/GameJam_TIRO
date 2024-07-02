@@ -6,6 +6,9 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 
+var savedActions : Array[ActionFrame] = []
+var death = false
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -48,28 +51,50 @@ func _ready():
 	death_timer.start()
 
 func _physics_process(delta):
+	if (!death):
+		read_from_player(delta)
+	else: 
+		read_from_buffer(delta)
+
+	move_and_slide()
+
+func read_from_player(delta) -> void:
+	var newFrameAction : ActionFrame = ActionFrame.new()
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		buffer_actions.capture_input("jump", delta)
+		newFrameAction.Jump = true
 		velocity.y = JUMP_VELOCITY
 
 	var direction = Input.get_axis("left", "right")
-	if direction < 0: 
-		buffer_actions.capture_input("left", delta)
-	if direction > 0: 
-		buffer_actions.capture_input("right", delta)
-		
+	newFrameAction.Move = direction
+	
+	savedActions.append(newFrameAction)
+	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	move_and_slide()
-
+func read_from_buffer(delta) -> void:
+	var actionframe = savedActions.pop_front()
+	if actionframe != null:
+		velocity.y += gravity * delta
+		if actionframe.Jump:
+			velocity.y = JUMP_VELOCITY
+		var direction = actionframe.Move
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 func _on_death_timer_timeout():
 	reset_player()
-	death_timer.start()
-	replay_actions()
+	death = true
+
+
+class ActionFrame:
+	var Move: float = 0
+	var Jump: bool = false
