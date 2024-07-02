@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cckq2qkeyspce"]
+[gd_scene load_steps=6 format=3 uid="uid://cckq2qkeyspce"]
 
 [ext_resource type="Script" path="res://player/scripts/player.gd" id="1_o0jok"]
 [ext_resource type="Texture2D" uid="uid://1wx803hmcd0b" path="res://resources/player.png" id="2_i788b"]
@@ -8,8 +8,11 @@
 radius = 17.0
 height = 122.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_td0r5"]
+size = Vector2(62.75, 55)
+
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_o0jok")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,5 +30,11 @@ autostart = true
 
 [node name="Actions" type="Node" parent="."]
 script = ExtResource("3_58v1o")
+
+[node name="ActionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionArea"]
+position = Vector2(33, 27)
+shape = SubResource("RectangleShape2D_td0r5")
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

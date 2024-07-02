@@ -4,16 +4,22 @@ signal s_death
 
 @onready var death_timer: Timer = $DeathTimer
 @onready var buffer_actions: Actions = $Actions
+@onready var action_area: CollisionShape2D = $ActionArea/CollisionShape2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
-
-var is_death = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var initial_position: Vector2
+var is_death = false
+
+func vision_direction(direction):
+	if direction < 0:
+		action_area.position.x = -abs(action_area.position.x)
+	elif direction > 0:
+		action_area.position.x = abs(action_area.position.x)
 
 func reset_player():
 	position = initial_position
@@ -50,6 +56,8 @@ func read_from_player(delta) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	vision_direction(direction)
 
 func read_from_buffer(delta) -> void:
 	var actionframe = buffer_actions.pop_buffer_action()
@@ -61,7 +69,8 @@ func read_from_buffer(delta) -> void:
 		if direction:
 			velocity.x = direction * SPEED
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, SPEED)	
+		vision_direction(direction)
 
 func _on_death_timer_timeout():
 	if not is_death:
