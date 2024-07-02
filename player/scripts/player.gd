@@ -21,6 +21,7 @@ func reset_player():
 
 func _ready():
 	initial_position = position
+	is_death = false
 
 func _physics_process(delta):
 	if not is_death:
