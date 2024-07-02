@@ -1,22 +1,23 @@
 extends Node
 class_name Actions
 
-var action_buffer: Array = []
-var elapsed_time: float = 0
+var action_buffer: Array[Action] = []
+var _mirror_action_buffer: Array[Action] = []
 
 class Action:
-	var action: String
-	var elapsed_time: float
-	var delta: float
-
-
-
-func capture_input(action: String, delta: float):
-	elapsed_time += delta
+	var move: float = 0
+	var jump: bool = false
 	
-	var new_action = Action.new()
-	new_action.action = action
-	new_action.elapsed_time = elapsed_time * delta
-	new_action.delta = delta
-	action_buffer.append(new_action)
 
+func init_capture_input():
+	return Action.new()
+
+func capture_input(action: Action):
+	action_buffer.append(action)
+	
+func pop_buffer_action() -> Action:
+	var current_action = action_buffer.pop_front()
+	_mirror_action_buffer.append(current_action)
+	if current_action == null:
+		action_buffer = _mirror_action_buffer
+	return current_action

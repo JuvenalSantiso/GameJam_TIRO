@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjhthc8hewvth"]
-
-[ext_resource type="PackedScene" uid="uid://cckq2qkeyspce" path="res://player/player.tscn" id="1_rjlue"]
+[gd_scene load_steps=2 format=3 uid="uid://cjhthc8hewvth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujqcn"]
 size = Vector2(374.5, 37)
@@ -33,5 +31,5 @@ color = Color(0.282353, 0.505882, 0.772549, 1)
 position = Vector2(187.75, 19.5)
 shape = SubResource("RectangleShape2D_ujqcn")
 
-[node name="Player" parent="." instance=ExtResource("1_rjlue")]
-position = Vector2(152, 268)
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(151, 317)

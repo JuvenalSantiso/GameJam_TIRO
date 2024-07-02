@@ -23,6 +23,7 @@ texture = ExtResource("2_i788b")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
+autostart = true
 
 [node name="Actions" type="Node" parent="."]
 script = ExtResource("3_58v1o")
