@@ -1,10 +1,8 @@
 extends CharacterBody2D
 
-signal s_death
-
-@onready var death_timer: Timer = $DeathTimer
 @onready var buffer_actions: Actions = $Actions
 @onready var action_area: CollisionShape2D = $ActionArea/CollisionShape2D
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
@@ -14,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var initial_position: Vector2
 var is_death = false
+var object_in_range: Node2D
 
 func vision_direction(direction):
 	if direction < 0:
@@ -22,6 +21,7 @@ func vision_direction(direction):
 		action_area.position.x = abs(action_area.position.x)
 
 func reset_player():
+	is_death = true
 	position = initial_position
 	set_velocity(Vector2(0,0))
 
@@ -50,14 +50,20 @@ func read_from_player(delta) -> void:
 	var direction = Input.get_axis("left", "right")
 	action.move = direction
 	
-	buffer_actions.capture_input(action)
-	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	vision_direction(direction)
+	
+	if Input.is_action_just_pressed("push") and object_in_range != null:
+		action.push = true
+		if object_in_range.has_method("do_push"):
+			object_in_range.do_push(direction)
+		
+	
+	buffer_actions.capture_input(action)
 
 func read_from_buffer(delta) -> void:
 	var actionframe = buffer_actions.pop_buffer_action()
@@ -71,9 +77,17 @@ func read_from_buffer(delta) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)	
 		vision_direction(direction)
+		
+		if actionframe.push and object_in_range != null:
+			if object_in_range.has_method("do_push"):
+				object_in_range.do_push(direction)
+	
+	
 
-func _on_death_timer_timeout():
-	if not is_death:
-		s_death.emit()
-	reset_player()
-	is_death = true
+func _on_action_area_body_entered(body):
+	print(body)
+	object_in_range = body
+
+func _on_action_area_body_exited(body):
+	print("out")
+	object_in_range = null

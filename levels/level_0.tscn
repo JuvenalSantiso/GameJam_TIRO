@@ -9,8 +9,25 @@ size = Vector2(374.5, 37)
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_0100v")
 
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(629, 423)
+collision_layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D4"]
+offset_left = -5.0
+offset_top = 57.0
+offset_right = 371.0
+offset_bottom = 96.0
+rotation = -0.355724
+color = Color(0.282353, 0.505882, 0.772549, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(177, 11)
+rotation = -0.359538
+shape = SubResource("RectangleShape2D_ujqcn")
+
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(632, 300)
+position = Vector2(1012, 289)
 collision_layer = 2
 
 [node name="ColorRect2" type="ColorRect" parent="StaticBody2D2"]
@@ -52,4 +69,8 @@ shape = SubResource("RectangleShape2D_ujqcn")
 position = Vector2(151, 317)
 
 [node name="Box" parent="." instance=ExtResource("2_elrd8")]
-position = Vector2(397, 391)
+position = Vector2(360, 268)
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

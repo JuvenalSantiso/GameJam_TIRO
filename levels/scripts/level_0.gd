@@ -1,4 +1,4 @@
 extends Node2D
 
 func _ready():
-	GameManager.spawn_player($Spawn)
+	GameManager.init_game_manager($Spawn, $DeathTimer.timeout)
