@@ -70,7 +70,7 @@ func read_from_buffer(delta) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)	
 		vision_direction(direction)
 		
-		if actionframe.push and grabbed_box != null:
+		if actionframe.grab and grabbed_box != null:
 			if grabbed_box.has_method("do_push"):
 				grabbed_box.do_push(direction)
 				

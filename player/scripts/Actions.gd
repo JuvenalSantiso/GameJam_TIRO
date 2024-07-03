@@ -7,7 +7,6 @@ var _mirror_action_buffer: Array[Action] = []
 class Action:
 	var move: float = 0
 	var jump: bool = false
-	var push: bool = false
 	var grab: bool = false
 	
 func init_capture_input():
