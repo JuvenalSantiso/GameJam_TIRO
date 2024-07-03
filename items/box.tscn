@@ -3,12 +3,16 @@
 [ext_resource type="Script" path="res://items/box.gd" id="1_bagee"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5838n"]
-size = Vector2(203, 40)
+size = Vector2(271, 105)
 
 [node name="Box" type="RigidBody2D" groups=["boxes"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_bagee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, 14.5)
+shape = SubResource("RectangleShape2D_5838n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -16,15 +20,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 184.0
-offset_bottom = 20.0
+offset_left = -130.0
+offset_top = -37.0
+offset_right = -90.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-color = Color(0.600101, 0.598654, 0, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(81.5, 0)
-shape = SubResource("RectangleShape2D_5838n")
+scale = Vector2(6.74958, 5.5287)
+color = Color(1, 1, 0.227451, 1)

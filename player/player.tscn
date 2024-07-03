@@ -24,10 +24,6 @@ texture_filter = 1
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_i788b")
 
-[node name="DeathTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="Actions" type="Node" parent="."]
 script = ExtResource("3_58v1o")
 
@@ -39,6 +35,5 @@ collision_mask = 4
 position = Vector2(33, 27)
 shape = SubResource("RectangleShape2D_td0r5")
 
-[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="body_entered" from="ActionArea" to="." method="_on_action_area_body_entered"]
 [connection signal="body_exited" from="ActionArea" to="." method="_on_action_area_body_exited"]

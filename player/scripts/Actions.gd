@@ -8,6 +8,7 @@ class Action:
 	var move: float = 0
 	var jump: bool = false
 	var push: bool = false
+	var grab: bool = false
 	
 func init_capture_input():
 	return Action.new()

@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-const STRONG = 50
+const STRONG = 500
 
 var initial_position: Vector2
 var initial_rotation

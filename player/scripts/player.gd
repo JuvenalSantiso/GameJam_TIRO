@@ -12,7 +12,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var initial_position: Vector2
 var is_death = false
-var object_in_range: Node2D
+var is_grabbable = false
+var is_grabbing = false
+var grabbed_box: RigidBody2D
 
 func vision_direction(direction):
 	if direction < 0:
@@ -25,17 +27,6 @@ func reset_player():
 	position = initial_position
 	set_velocity(Vector2(0,0))
 
-func _ready():
-	initial_position = position
-	is_death = false
-
-func _physics_process(delta):
-	if not is_death:
-		read_from_player(delta)
-	else: 
-		read_from_buffer(delta)
-
-	move_and_slide()
 
 func read_from_player(delta) -> void:
 	var action = buffer_actions.init_capture_input()
@@ -57,11 +48,12 @@ func read_from_player(delta) -> void:
 	
 	vision_direction(direction)
 	
-	if Input.is_action_just_pressed("push") and object_in_range != null:
-		action.push = true
-		if object_in_range.has_method("do_push"):
-			object_in_range.do_push(direction)
+	if Input.is_action_just_pressed("grab") and grabbed_box:
+		action.grab = true
+		if grabbed_box.has_method("do_push"):
+			grabbed_box.do_push(direction)
 		
+	move_and_slide()
 	
 	buffer_actions.capture_input(action)
 
@@ -78,16 +70,27 @@ func read_from_buffer(delta) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)	
 		vision_direction(direction)
 		
-		if actionframe.push and object_in_range != null:
-			if object_in_range.has_method("do_push"):
-				object_in_range.do_push(direction)
-	
-	
+		if actionframe.push and grabbed_box != null:
+			if grabbed_box.has_method("do_push"):
+				grabbed_box.do_push(direction)
+				
+	move_and_slide()
+				
+func _ready():
+	initial_position = position
+	is_death = false
+
+func _physics_process(delta):
+	if not is_death:
+		read_from_player(delta)
+	else: 
+		read_from_buffer(delta)
 
 func _on_action_area_body_entered(body):
 	print(body)
-	object_in_range = body
+	if body.is_in_group("boxes"):
+		grabbed_box = body
 
 func _on_action_area_body_exited(body):
-	print("out")
-	object_in_range = null
+	if body.is_in_group("boxes"):
+		grabbed_box = null

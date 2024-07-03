@@ -18,12 +18,12 @@ offset_left = -5.0
 offset_top = 57.0
 offset_right = 371.0
 offset_bottom = 96.0
-rotation = -0.355724
+rotation = -0.256385
 color = Color(0.282353, 0.505882, 0.772549, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(177, 11)
-rotation = -0.359538
+position = Vector2(183, 29)
+rotation = -0.264756
 shape = SubResource("RectangleShape2D_ujqcn")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
@@ -69,7 +69,7 @@ shape = SubResource("RectangleShape2D_ujqcn")
 position = Vector2(151, 317)
 
 [node name="Box" parent="." instance=ExtResource("2_elrd8")]
-position = Vector2(360, 268)
+position = Vector2(413, 314)
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
