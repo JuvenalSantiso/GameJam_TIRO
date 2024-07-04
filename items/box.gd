@@ -1,9 +1,10 @@
 extends RigidBody2D
 
-const STRONG = 500
+const STRONG = 100
 
 var initial_position: Vector2
 var initial_rotation
+@onready var grab_point = $GrabPoint
 
 var force: Vector2 = Vector2.ZERO
 
@@ -23,6 +24,9 @@ func reset_box():
 	
 func _integrate_forces(state):
 	apply_central_force(force)
-	
+
+func _physics_process(delta):
+	print("force ", grab_point.get_actual_force())
+	apply_central_force(grab_point.get_actual_force() * STRONG)
 
 

@@ -32,12 +32,10 @@ grow_vertical = 2
 scale = Vector2(6.74958, 5.5287)
 color = Color(1, 1, 0.227451, 1)
 
-[node name="GrabPoint" type="RigidBody2D" parent="."]
+[node name="GrabPoint" type="Area2D" parent="."]
 disable_mode = 1
 collision_layer = 16
 collision_mask = 0
-gravity_scale = 0.0
-freeze = true
 script = ExtResource("2_irh0l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabPoint"]
