@@ -12,9 +12,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var initial_position: Vector2
 var is_death = false
-var is_grabbable = false
-var is_grabbing = false
+var is_grabbing: bool = false
+var is_sticking:bool = false
 var grabbed_box: RigidBody2D
+var grabber_box: Area2D
 
 func vision_direction(direction):
 	if direction < 0:
@@ -26,6 +27,8 @@ func reset_player():
 	is_death = true
 	position = initial_position
 	set_velocity(Vector2(0,0))
+	is_sticking = false
+	grabbed_box = null
 
 
 func read_from_player(delta) -> void:
@@ -50,10 +53,18 @@ func read_from_player(delta) -> void:
 	
 	if Input.is_action_just_pressed("grab") and grabbed_box:
 		action.grab = true
-		if grabbed_box.has_method("do_push"):
-			grabbed_box.do_push(direction)
-		
-	move_and_slide()
+		if is_sticking:
+			is_sticking = false
+		else:
+			print(grabber_box)
+			global_position = grabber_box.global_position 
+			is_sticking = true
+	
+	if not is_sticking:
+		move_and_slide()
+	else:
+		global_position = grabber_box.global_position 
+		grabbed_box.do_push(direction)
 	
 	buffer_actions.capture_input(action)
 
@@ -70,11 +81,18 @@ func read_from_buffer(delta) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)	
 		vision_direction(direction)
 		
-		if actionframe.grab and grabbed_box != null:
-			if grabbed_box.has_method("do_push"):
-				grabbed_box.do_push(direction)
-				
-	move_and_slide()
+		if actionframe.grab and grabbed_box:
+			if is_sticking:
+				is_sticking = false
+			else:
+				global_position = grabber_box.global_position  
+				is_sticking = true
+		
+		if not is_sticking:
+			move_and_slide()
+		else:
+			global_position = grabber_box.global_position
+			grabbed_box.do_push(direction)
 				
 func _ready():
 	initial_position = position
@@ -86,11 +104,21 @@ func _physics_process(delta):
 	else: 
 		read_from_buffer(delta)
 
+
+
 func _on_action_area_body_entered(body):
-	print(body)
 	if body.is_in_group("boxes"):
 		grabbed_box = body
+		
 
 func _on_action_area_body_exited(body):
-	if body.is_in_group("boxes"):
+	if body.is_in_group("boxes") and not is_sticking:
 		grabbed_box = null
+		grabber_box = null
+
+
+func _on_action_area_area_entered(area):
+	print(area)
+	if area.is_in_group("grabber_box"):
+		grabber_box = area
+	
