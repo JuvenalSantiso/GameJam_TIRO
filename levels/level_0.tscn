@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjhthc8hewvth"]
+[gd_scene load_steps=6 format=3 uid="uid://cjhthc8hewvth"]
 
 [ext_resource type="Script" path="res://levels/scripts/level_0.gd" id="1_0100v"]
+[ext_resource type="PackedScene" uid="uid://cxe5b5m7by8xe" path="res://items/mill_platform.tscn" id="2_dbtut"]
 [ext_resource type="PackedScene" uid="uid://dhn20444pg50o" path="res://items/box.tscn" id="2_elrd8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeext"]
@@ -62,9 +63,12 @@ shape = SubResource("RectangleShape2D_ujqcn")
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(151, 317)
 
-[node name="Box" parent="." instance=ExtResource("2_elrd8")]
-position = Vector2(570, 104)
-
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="Box" parent="." instance=ExtResource("2_elrd8")]
+position = Vector2(677, 46)
+
+[node name="MillPlatform" parent="." instance=ExtResource("2_dbtut")]
+position = Vector2(948, 205)

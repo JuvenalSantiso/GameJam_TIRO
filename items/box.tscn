@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhn20444pg50o"]
 
-[ext_resource type="Script" path="res://items/box.gd" id="1_bagee"]
+[ext_resource type="Script" path="res://items/scripts/box.gd" id="1_bagee"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5838n"]
 size = Vector2(271, 105)
@@ -13,7 +13,8 @@ radius = 23.0217
 
 [node name="Box" type="RigidBody2D" groups=["boxes"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 19
+mass = 200.0
 script = ExtResource("1_bagee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
