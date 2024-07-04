@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhn20444pg50o"]
+
+[ext_resource type="Script" path="res://items/box.gd" id="1_bagee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5838n"]
+size = Vector2(271, 105)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cns0d"]
+radius = 23.0217
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_faskp"]
+radius = 23.0217
+
+[node name="Box" type="RigidBody2D" groups=["boxes"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_bagee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, 14.5)
+shape = SubResource("RectangleShape2D_5838n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -37.0
+offset_right = -90.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.74958, 5.5287)
+color = Color(1, 1, 0.227451, 1)
+
+[node name="Grabber2" type="Marker2D" parent="."]
+position = Vector2(190, 14)
+
+[node name="Area2D" type="Area2D" parent="Grabber2" groups=["grabber_box"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grabber2/Area2D"]
+shape = SubResource("CircleShape2D_cns0d")
+
+[node name="Grabber" type="Marker2D" parent="."]
+position = Vector2(-188, 10)
+
+[node name="Area2D" type="Area2D" parent="Grabber" groups=["grabber_box"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grabber/Area2D"]
+shape = SubResource("CircleShape2D_faskp")

@@ -1,24 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjhthc8hewvth"]
+[gd_scene load_steps=5 format=3 uid="uid://cjhthc8hewvth"]
 
 [ext_resource type="Script" path="res://levels/scripts/level_0.gd" id="1_0100v"]
+[ext_resource type="PackedScene" uid="uid://dhn20444pg50o" path="res://items/box.tscn" id="2_elrd8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeext"]
+size = Vector2(866.898, 483.317)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujqcn"]
-size = Vector2(374.5, 37)
+size = Vector2(702, 36.2976)
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_0100v")
 
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(748, 385)
+collision_layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D4"]
+offset_left = -162.0
+offset_top = 98.0
+offset_right = 533.0
+offset_bottom = 137.0
+rotation = -0.256385
+color = Color(0.282353, 0.505882, 0.772549, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(323, 223)
+rotation = -0.253349
+shape = SubResource("RectangleShape2D_jeext")
+
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(606, 327)
+position = Vector2(1239, 342)
 collision_layer = 2
 
 [node name="ColorRect2" type="ColorRect" parent="StaticBody2D2"]
-offset_right = 376.0
-offset_bottom = 39.0
+offset_left = 11.0
+offset_top = -34.0
+offset_right = 709.0
+offset_bottom = 5.0
 color = Color(0.282353, 0.505882, 0.772549, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(187.75, 19.5)
+position = Vector2(361, -15)
 shape = SubResource("RectangleShape2D_ujqcn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -26,13 +49,22 @@ position = Vector2(84, 440)
 collision_layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_right = 376.0
-offset_bottom = 39.0
+offset_left = -10.0
+offset_top = -1.0
+offset_right = 670.0
+offset_bottom = 38.0
 color = Color(0.282353, 0.505882, 0.772549, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(187.75, 19.5)
+position = Vector2(343, 19.5)
 shape = SubResource("RectangleShape2D_ujqcn")
 
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(151, 317)
+
+[node name="Box" parent="." instance=ExtResource("2_elrd8")]
+position = Vector2(570, 104)
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
