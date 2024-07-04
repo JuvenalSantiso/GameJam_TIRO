@@ -14,7 +14,6 @@ radius = 23.0217
 [node name="Box" type="RigidBody2D" groups=["boxes"]]
 collision_layer = 4
 collision_mask = 19
-mass = 200.0
 script = ExtResource("1_bagee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

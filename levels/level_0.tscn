@@ -66,5 +66,5 @@ position = Vector2(151, 317)
 wait_time = 5.0
 autostart = true
 
-[node name="MillPlatform" parent="." instance=ExtResource("2_dbtut")]
-position = Vector2(652, 287)
+[node name="BalancePlatform" parent="." instance=ExtResource("2_dbtut")]
+position = Vector2(714, 271)
