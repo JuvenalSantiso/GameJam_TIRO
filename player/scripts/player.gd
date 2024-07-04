@@ -123,7 +123,7 @@ func _on_action_area_body_exited(body):
 
 func _on_action_area_area_entered(area):
 	print(area)
-	is_grabbable = true
 	if area.is_in_group("grabber_box"):
 		grabber_box = area
+		is_grabbable = true
 	
