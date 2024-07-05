@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjhthc8hewvth"]
+[gd_scene load_steps=8 format=3 uid="uid://cjhthc8hewvth"]
 
 [ext_resource type="Script" path="res://levels/scripts/level_0.gd" id="1_0100v"]
-[ext_resource type="PackedScene" uid="uid://dhn20444pg50o" path="res://items/box.tscn" id="2_elrd8"]
+[ext_resource type="PackedScene" uid="uid://cxe5b5m7by8xe" path="res://items/balance_platform.tscn" id="2_dbtut"]
+[ext_resource type="Script" path="res://levels/scripts/door_goal.gd" id="3_ogfln"]
+[ext_resource type="Texture2D" uid="uid://lusp2o0d472f" path="res://resources/box.png" id="3_vf1ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeext"]
 size = Vector2(866.898, 483.317)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujqcn"]
 size = Vector2(702, 36.2976)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_73h8v"]
+radius = 77.0584
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_0100v")
@@ -62,9 +67,22 @@ shape = SubResource("RectangleShape2D_ujqcn")
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(151, 317)
 
-[node name="Box" parent="." instance=ExtResource("2_elrd8")]
-position = Vector2(570, 104)
-
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="BalancePlatform" parent="." instance=ExtResource("2_dbtut")]
+position = Vector2(714, 271)
+
+[node name="DoorGoal" type="Area2D" parent="."]
+position = Vector2(1461, 155)
+collision_layer = 32
+script = ExtResource("3_ogfln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorGoal"]
+shape = SubResource("CircleShape2D_73h8v")
+
+[node name="Sprite2D" type="Sprite2D" parent="DoorGoal"]
+texture = ExtResource("3_vf1ya")
+
+[connection signal="body_entered" from="DoorGoal" to="DoorGoal" method="_on_body_entered"]
