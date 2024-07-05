@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjhthc8hewvth"]
 
 [ext_resource type="Script" path="res://levels/scripts/level_0.gd" id="1_0100v"]
-[ext_resource type="PackedScene" uid="uid://dhn20444pg50o" path="res://items/box.tscn" id="2_elrd8"]
+[ext_resource type="PackedScene" uid="uid://cxe5b5m7by8xe" path="res://items/balance_platform.tscn" id="2_dbtut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeext"]
 size = Vector2(866.898, 483.317)
@@ -62,9 +62,9 @@ shape = SubResource("RectangleShape2D_ujqcn")
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(151, 317)
 
-[node name="Box" parent="." instance=ExtResource("2_elrd8")]
-position = Vector2(570, 104)
-
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="BalancePlatform" parent="." instance=ExtResource("2_dbtut")]
+position = Vector2(714, 271)

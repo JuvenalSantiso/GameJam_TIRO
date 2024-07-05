@@ -1,7 +1,7 @@
 extends Node
 
 var player_scene: PackedScene = preload("res://player/player.tscn")
-
+var player_count: int = 0
 var current_spawner: Marker2D
 
 func init_game_manager(marker_spawn, death_signal):
@@ -15,8 +15,12 @@ func next_generation():
 		pl.reset_player()
 	for bx in get_tree().get_nodes_in_group("boxes"):
 		bx.reset_box()
+	for ssw in get_tree().get_nodes_in_group("seesaw"):
+		ssw.reset_balance()
 	
 	spawn_player()
+	
+	player_count += 1
 
 func spawn_player():
 	var player = player_scene.instantiate()
