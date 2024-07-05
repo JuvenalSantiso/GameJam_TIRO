@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
+const PUSH_FORCE = 90000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -65,6 +66,15 @@ func read_from_player(delta) -> void:
 	
 	if not is_sticking:
 		move_and_slide()
+		for idx_c in get_slide_collision_count():
+			var coll = get_slide_collision(idx_c).get_collider()
+			if coll.name == 'A':
+				if global_position.x > coll.global_position.x:
+					print("to positivo")
+					coll.apply_torque(PUSH_FORCE)
+				else:
+					print("to negativo")
+					coll.apply_torque(-PUSH_FORCE)
 	else:
 		global_position = grabber_box.global_position 
 		grabbed_box.do_push(direction)
@@ -93,6 +103,13 @@ func read_from_buffer(delta) -> void:
 		
 		if not is_sticking:
 			move_and_slide()
+			
+			
+				
+			#if player.global_position.x > global_position.x:
+		#		apply_torque_impulse(-BOUNCE_FORCE)
+	#		else:
+			#	apply_torque_impulse(BOUNCE_FORCE)
 		else:
 			global_position = grabber_box.global_position
 			grabbed_box.do_push(direction)

@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxe5b5m7by8xe"]
+[gd_scene load_steps=6 format=3 uid="uid://cxe5b5m7by8xe"]
 
 [ext_resource type="Texture2D" uid="uid://b00ayrckfkxdc" path="res://resources/platform.png" id="1_3gj61"]
-[ext_resource type="Script" path="res://items/scripts/seesaw.gd" id="1_ul001"]
 [ext_resource type="Texture2D" uid="uid://dn7tnd0wcg6ht" path="res://resources/joint.png" id="2_ewqus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qok6x"]
@@ -17,9 +16,10 @@ height = 698.0
 [node name="A" type="RigidBody2D" parent="."]
 collision_layer = 16
 collision_mask = 19
-script = ExtResource("1_ul001")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="A"]
+node_a = NodePath("..")
+node_b = NodePath("../../Base")
 disable_collision = false
 motor_enabled = true
 
@@ -30,7 +30,6 @@ texture = ExtResource("1_3gj61")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A"]
 position = Vector2(0.25, -1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_qok6x")
 
 [node name="DetectPlayer" type="Area2D" parent="A"]
@@ -51,5 +50,5 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_ewqus")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
-position = Vector2(0, 30)
+position = Vector2(0, 20)
 shape = SubResource("CircleShape2D_av244")
