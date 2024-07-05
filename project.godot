@@ -49,3 +49,4 @@ grab={
 2d_physics/layer_3="items"
 2d_physics/layer_4="areas"
 2d_physics/layer_5="platform"
+2d_physics/layer_6="door_exit"
