@@ -1,13 +1,15 @@
-[gd_scene load_steps=34 format=3 uid="uid://lqrrwik1jq00"]
+[gd_scene load_steps=36 format=3 uid="uid://lqrrwik1jq00"]
 
 [ext_resource type="Texture2D" uid="uid://d1qdhbbjh4qhe" path="res://resources/player/Arm.png" id="1_pem0p"]
 [ext_resource type="Script" path="res://scenes/player/visual_player.gd" id="1_u1eu2"]
 [ext_resource type="Texture2D" uid="uid://cprcvpvbd570k" path="res://resources/player/Hand.png" id="2_3tq5v"]
+[ext_resource type="TileSet" uid="uid://bxqleb0xmp5ru" path="res://resources/tileset/tile_map_config.tres" id="2_mh5yl"]
 [ext_resource type="Texture2D" uid="uid://caksaakhe52sq" path="res://resources/player/Leg.png" id="3_f6dle"]
 [ext_resource type="Texture2D" uid="uid://dqixaqc5dqrtv" path="res://resources/player/Feet.png" id="4_gujwk"]
 [ext_resource type="Texture2D" uid="uid://cx0e6qv6vnj1i" path="res://resources/player/Body.png" id="5_p6wsm"]
 [ext_resource type="Texture2D" uid="uid://72jupyb3px2b" path="res://resources/player/HeadBomb.png" id="6_pxjmi"]
-[ext_resource type="Texture2D" uid="uid://cu0uka0xhkvml" path="res://icon.svg" id="7_m8q5d"]
+[ext_resource type="Texture2D" uid="uid://ldfsxclx014a" path="res://resources/items/Caja.png" id="9_fjcc8"]
+[ext_resource type="Texture2D" uid="uid://bwpwc62fuejoo" path="res://resources/items/Asidero.png" id="10_ncbx8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d3pbs"]
 radius = 24.0
@@ -1205,6 +1207,11 @@ graph_offset = Vector2(34, 2)
 position = Vector2(527, 498)
 script = ExtResource("1_u1eu2")
 
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_mh5yl")
+format = 2
+layer_0/tile_data = PackedInt32Array(65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65533, 0, 0, -65533, 0, 0, -131069, 0, 0, -65534, 65536, 0, -65535, 65536, 0, -65536, 65536, 0, -1, 65536, 0, -2, 65536, 0, -3, 65536, 0, -65539, 65536, 0, -65538, 65536, 0, -65537, 65536, 0, -131072, 65536, 0, -131071, 65536, 0, -131070, 65536, 0, -196605, 0, 0, -196606, 65536, 0, -196607, 65536, 0, -196608, 65536, 0, -131073, 65536, 0, -131074, 65536, 0, -131075, 65536, 0, 65532, 0, 0, -4, 0, 0, -65540, 0, 0, -65541, 0, 0, -131077, 0, 0, -131076, 0, 0)
+
 [node name="PartsSkeletonContainer" type="Node2D" parent="."]
 
 [node name="Parts" type="Node2D" parent="PartsSkeletonContainer"]
@@ -1213,70 +1220,70 @@ metadata/_edit_group_ = true
 
 [node name="BackArm" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(9.69055, -139.931)
-rotation = -3.03601
+position = Vector2(17.9023, -137.203)
+rotation = 3.08017
 scale = Vector2(0.999524, 0.999524)
 texture = ExtResource("1_pem0p")
 
 [node name="BackHand" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(20.0541, -109.743)
-rotation = 2.38445
+position = Vector2(24.8245, -103.22)
+rotation = 2.79269
 scale = Vector2(0.999391, 0.999391)
 texture = ExtResource("2_3tq5v")
 
 [node name="BackLeg" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
-position = Vector2(11.7787, -72.3218)
-rotation = -0.112549
+position = Vector2(20.6782, -70.3926)
+rotation = -0.293632
 scale = Vector2(0.999525, 0.999525)
 texture = ExtResource("3_f6dle")
 
 [node name="BackFeet" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
-position = Vector2(17.4006, -26.3942)
-rotation = -0.12427
+position = Vector2(26.0566, -25.4154)
+rotation = 0.0263233
 scale = Vector2(0.999387, 0.999387)
 texture = ExtResource("4_gujwk")
 
 [node name="Body" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.117647, 0.117647, 0.117647, 1)
-position = Vector2(0.798645, -125.821)
+position = Vector2(5.6767, -123.167)
 scale = Vector2(0.99968, 0.99968)
 texture = ExtResource("5_p6wsm")
 
 [node name="Leg" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.137255, 0.137255, 0.137255, 1)
-position = Vector2(-10.1689, -70.8144)
-rotation = 0.00692756
+position = Vector2(-4.19727, -68.19)
+rotation = -0.0451297
 scale = Vector2(0.999529, 0.999529)
 texture = ExtResource("3_f6dle")
 
 [node name="Feet" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.137255, 0.137255, 0.137255, 1)
-position = Vector2(-12.8148, -25.8093)
-rotation = 0.0942888
+position = Vector2(-11.2762, -24.4926)
+rotation = 0.318745
 scale = Vector2(0.999382, 0.999382)
 texture = ExtResource("4_gujwk")
 
 [node name="Arm" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.176471, 0.176471, 0.176471, 1)
-position = Vector2(-19.872, -141.423)
-rotation = 0.409584
+position = Vector2(-10.9369, -137.498)
+rotation = 0.185424
 scale = Vector2(0.999529, 0.999529)
 texture = ExtResource("1_pem0p")
 
 [node name="Hand" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.176471, 0.176471, 0.176471, 1)
-position = Vector2(-18.554, -109.613)
-rotation = 2.58666
+position = Vector2(-10.3309, -102.391)
+rotation = 2.89235
 scale = Vector2(0.999386, 0.999386)
 texture = ExtResource("2_3tq5v")
 
 [node name="HeadBomb" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.118581, 0.118581, 0.118581, 1)
-position = Vector2(2.57996, -198.654)
-rotation = 0.0995341
+position = Vector2(9.85608, -195.655)
+rotation = 0.18613
 scale = Vector2(0.999509, 0.999509)
 texture = ExtResource("6_pxjmi")
 
@@ -1427,12 +1434,6 @@ metadata/_edit_lock_ = true
 position = Vector2(-3, -110)
 shape = SubResource("CapsuleShape2D_d3pbs")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(25, 63)
-scale = Vector2(3.96875, 1)
-texture = ExtResource("7_m8q5d")
-metadata/_edit_lock_ = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_e2mah")
@@ -1443,3 +1444,14 @@ autoplay = "Runnung"
 tree_root = SubResource("AnimationNodeStateMachine_eca71")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Walk/WalkSpeed/blend_amount = 0
+
+[node name="Caja" type="Sprite2D" parent="."]
+position = Vector2(198, -122)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("9_fjcc8")
+
+[node name="Asidero" type="Sprite2D" parent="Caja"]
+show_behind_parent = true
+position = Vector2(-140, -12.6316)
+scale = Vector2(1.05263, 1.05263)
+texture = ExtResource("10_ncbx8")
