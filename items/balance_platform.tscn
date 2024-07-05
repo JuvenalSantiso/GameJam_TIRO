@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxe5b5m7by8xe"]
+[gd_scene load_steps=7 format=3 uid="uid://cxe5b5m7by8xe"]
 
 [ext_resource type="Texture2D" uid="uid://b00ayrckfkxdc" path="res://resources/platform.png" id="1_3gj61"]
+[ext_resource type="Script" path="res://items/balance_platform.gd" id="1_6ask8"]
 [ext_resource type="Texture2D" uid="uid://dn7tnd0wcg6ht" path="res://resources/joint.png" id="2_ewqus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qok6x"]
@@ -11,7 +12,8 @@ height = 698.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_av244"]
 
-[node name="BalancePlatform" type="Node2D"]
+[node name="BalancePlatform" type="Node2D" groups=["seesaw"]]
+script = ExtResource("1_6ask8")
 
 [node name="A" type="RigidBody2D" parent="."]
 collision_layer = 16

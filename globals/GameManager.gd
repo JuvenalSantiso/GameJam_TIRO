@@ -15,6 +15,8 @@ func next_generation():
 		pl.reset_player()
 	for bx in get_tree().get_nodes_in_group("boxes"):
 		bx.reset_box()
+	for ssw in get_tree().get_nodes_in_group("seesaw"):
+		ssw.reset_balance()
 	
 	spawn_player()
 	

@@ -63,7 +63,7 @@ shape = SubResource("RectangleShape2D_ujqcn")
 position = Vector2(151, 317)
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 5.0
 autostart = true
 
 [node name="BalancePlatform" parent="." instance=ExtResource("2_dbtut")]

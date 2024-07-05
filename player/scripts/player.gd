@@ -60,7 +60,6 @@ func read_from_player(delta) -> void:
 		if is_sticking:
 			is_sticking = false
 		else:
-			print(grabber_box)
 			global_position = grabber_box.global_position 
 			is_sticking = true
 	
@@ -70,10 +69,8 @@ func read_from_player(delta) -> void:
 			var coll = get_slide_collision(idx_c).get_collider()
 			if coll.name == 'A':
 				if global_position.x > coll.global_position.x:
-					print("to positivo")
 					coll.apply_torque(PUSH_FORCE)
 				else:
-					print("to negativo")
 					coll.apply_torque(-PUSH_FORCE)
 	else:
 		global_position = grabber_box.global_position 
@@ -103,13 +100,13 @@ func read_from_buffer(delta) -> void:
 		
 		if not is_sticking:
 			move_and_slide()
-			
-			
-				
-			#if player.global_position.x > global_position.x:
-		#		apply_torque_impulse(-BOUNCE_FORCE)
-	#		else:
-			#	apply_torque_impulse(BOUNCE_FORCE)
+			for idx_c in get_slide_collision_count():
+				var coll = get_slide_collision(idx_c).get_collider()
+				if coll.name == 'A':
+					if global_position.x > coll.global_position.x:
+						coll.apply_torque(PUSH_FORCE)
+					else:
+						coll.apply_torque(-PUSH_FORCE)
 		else:
 			global_position = grabber_box.global_position
 			grabbed_box.do_push(direction)
@@ -139,7 +136,6 @@ func _on_action_area_body_exited(body):
 
 
 func _on_action_area_area_entered(area):
-	print(area)
 	if area.is_in_group("grabber_box"):
 		grabber_box = area
 		is_grabbable = true
