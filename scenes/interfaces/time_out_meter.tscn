@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjr7a3hoy6vj2"]
+
+[ext_resource type="Script" path="res://scenes/interfaces/time_out_meter.gd" id="1_3c677"]
+[ext_resource type="Texture2D" uid="uid://dh1nrlym7qvxt" path="res://resources/interface/Under.png" id="1_h71ow"]
+[ext_resource type="Texture2D" uid="uid://dxijkb4oddjb8" path="res://resources/interface/Over.png" id="2_3ff8j"]
+[ext_resource type="Texture2D" uid="uid://dx4ykr2dc33pd" path="res://resources/interface/Progress.png" id="3_xfui4"]
+[ext_resource type="Texture2D" uid="uid://72jupyb3px2b" path="res://resources/player/HeadBomb.png" id="4_exqug"]
+[ext_resource type="FontFile" uid="uid://bpb422jwfg7b4" path="res://font/RubikSprayPaint-Regular.ttf" id="5_c7uot"]
+
+[node name="Time_Out_Meter" type="Control"]
+process_mode = 1
+layout_mode = 3
+anchor_right = 0.341
+anchor_bottom = 0.603
+offset_right = 0.167969
+offset_bottom = 0.255981
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3c677")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("1_h71ow")
+texture_over = ExtResource("2_3ff8j")
+texture_progress = ExtResource("3_xfui4")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TextureProgressBar"]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.015
+anchor_bottom = 1.023
+offset_left = 2.0
+offset_top = -21.0
+offset_right = -3.9
+offset_bottom = -3.38
+texture = ExtResource("4_exqug")
+
+[node name="Label" type="Label" parent="MarginContainer/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.288
+anchor_top = 0.265
+anchor_right = 0.715
+anchor_bottom = 0.718
+offset_left = -0.184006
+offset_top = -0.145004
+offset_right = 0.00497437
+offset_bottom = -0.174011
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_c7uot")
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

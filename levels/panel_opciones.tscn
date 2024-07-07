@@ -1,0 +1,129 @@
+[gd_scene load_steps=15 format=3 uid="uid://7hgcvhcbcxqk"]
+
+[ext_resource type="Texture2D" uid="uid://bb88cdfitkdcn" path="res://resources/interface/Panel Basico.png" id="1_4xbnv"]
+[ext_resource type="Script" path="res://levels/panel_opciones.gd" id="2_7xspt"]
+[ext_resource type="FontFile" uid="uid://bpb422jwfg7b4" path="res://font/RubikSprayPaint-Regular.ttf" id="2_akqcq"]
+[ext_resource type="Texture2D" uid="uid://dpv8yyd3k0l32" path="res://resources/interface/Botón Basico.png" id="3_mt8gu"]
+[ext_resource type="Texture2D" uid="uid://danae1dfc4ayi" path="res://resources/interface/Boton Selected.png" id="4_h7xb3"]
+[ext_resource type="Texture2D" uid="uid://boi3o0b32kxkm" path="res://resources/interface/Boton Pressed.png" id="5_wo3aw"]
+[ext_resource type="Texture2D" uid="uid://cra118kr1ixr5" path="res://resources/interface/Boton Focus.png" id="6_4sihq"]
+[ext_resource type="Texture2D" uid="uid://bjhkmo5swsme3" path="res://resources/interface/Fondo Titulo.png" id="7_6vudl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uv17a"]
+texture = ExtResource("1_4xbnv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gyil7"]
+texture = ExtResource("3_mt8gu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ffx2g"]
+texture = ExtResource("4_h7xb3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bhugb"]
+texture = ExtResource("5_wo3aw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crpkl"]
+texture = ExtResource("6_4sihq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5hnf"]
+texture = ExtResource("7_6vudl")
+
+[node name="Panel_Opciones" type="Panel"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 268.0
+offset_right = -486.0
+offset_bottom = -376.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_uv17a")
+script = ExtResource("2_7xspt")
+
+[node name="Continuar" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.349
+anchor_top = 0.357
+anchor_right = 0.648
+anchor_bottom = 0.467
+offset_left = 0.0979919
+offset_top = -0.104004
+offset_right = 0.0960083
+offset_bottom = -0.0240021
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_akqcq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gyil7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ffx2g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bhugb")
+theme_override_styles/focus = SubResource("StyleBoxTexture_crpkl")
+text = "Continuar"
+
+[node name="Reiniciar" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.349
+anchor_top = 0.508
+anchor_right = 0.648
+anchor_bottom = 0.604
+offset_left = 0.0979919
+offset_top = -0.17601
+offset_right = 0.0960083
+offset_bottom = 3.71199
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_akqcq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gyil7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ffx2g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bhugb")
+theme_override_styles/focus = SubResource("StyleBoxTexture_crpkl")
+text = "Reiniciar"
+
+[node name="Salir" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.349
+anchor_top = 0.647
+anchor_right = 0.648
+anchor_bottom = 0.747
+offset_left = 0.0979919
+offset_top = 4.061
+offset_right = 0.0960083
+offset_bottom = 4.04599
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_akqcq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gyil7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ffx2g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bhugb")
+theme_override_styles/focus = SubResource("StyleBoxTexture_crpkl")
+text = "Salir"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.362
+offset_left = 56.0
+offset_top = -17.0
+offset_right = -71.0
+offset_bottom = -0.134003
+theme_override_styles/panel = SubResource("StyleBoxTexture_x5hnf")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.229
+anchor_top = 0.414
+anchor_right = 0.849
+anchor_bottom = 0.594
+offset_left = -0.0590057
+offset_top = 0.00799561
+offset_right = -0.07901
+offset_bottom = -0.0320053
+theme_override_fonts/font = ExtResource("2_akqcq")
+text = "OPCIONES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Continuar" to="." method="_on_continuar_pressed"]
+[connection signal="button_down" from="Reiniciar" to="." method="_on_reiniciar_button_down"]
+[connection signal="pressed" from="Salir" to="." method="_on_salir_pressed"]

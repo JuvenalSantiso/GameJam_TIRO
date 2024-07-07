@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjhthc8hewvth"]
 
 [ext_resource type="Script" path="res://levels/scripts/level_0.gd" id="1_0100v"]
+[ext_resource type="PackedScene" uid="uid://cxe5b5m7by8xe" path="res://items/balance_platform.tscn" id="2_dbtut"]
 [ext_resource type="Script" path="res://levels/scripts/door_goal.gd" id="3_ogfln"]
 [ext_resource type="Texture2D" uid="uid://lusp2o0d472f" path="res://resources/box.png" id="3_vf1ya"]
-[ext_resource type="PackedScene" uid="uid://dhn20444pg50o" path="res://items/box.tscn" id="5_i5a47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeext"]
 size = Vector2(866.898, 483.317)
@@ -72,7 +72,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="DoorGoal" type="Area2D" parent="."]
-position = Vector2(1461, 155)
+position = Vector2(1675, -516)
 collision_layer = 32
 script = ExtResource("3_ogfln")
 
@@ -82,7 +82,17 @@ shape = SubResource("CircleShape2D_73h8v")
 [node name="Sprite2D" type="Sprite2D" parent="DoorGoal"]
 texture = ExtResource("3_vf1ya")
 
-[node name="Box" parent="." instance=ExtResource("5_i5a47")]
-position = Vector2(839, 247)
+[node name="BalancePlatform" parent="." instance=ExtResource("2_dbtut")]
+position = Vector2(677, 162)
+
+[node name="BalancePlatform2" parent="." instance=ExtResource("2_dbtut")]
+position = Vector2(1407, 69)
+
+[node name="BalancePlatform3" parent="." instance=ExtResource("2_dbtut")]
+position = Vector2(736, -175)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1072, -21)
+zoom = Vector2(0.5, 0.5)
 
 [connection signal="body_entered" from="DoorGoal" to="DoorGoal" method="_on_body_entered"]

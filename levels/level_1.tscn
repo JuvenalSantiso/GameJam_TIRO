@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdorbfifiw04b"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_3vajg"]
+[ext_resource type="TileSet" uid="uid://bxqleb0xmp5ru" path="res://resources/tileset/tile_map_config.tres" id="1_ae27a"]
+[ext_resource type="PackedScene" uid="uid://pc2388chrw1l" path="res://scenes/interfaces/ready.tscn" id="3_0yvqm"]
+[ext_resource type="FontFile" uid="uid://bpb422jwfg7b4" path="res://font/RubikSprayPaint-Regular.ttf" id="3_i5w2x"]
+[ext_resource type="PackedScene" uid="uid://bjr7a3hoy6vj2" path="res://scenes/interfaces/time_out_meter.tscn" id="4_qcw7k"]
+[ext_resource type="Texture2D" uid="uid://csqtwvemiquf3" path="res://resources/interface/Botón Escape.png" id="4_te12l"]
+[ext_resource type="PackedScene" uid="uid://7hgcvhcbcxqk" path="res://levels/panel_opciones.tscn" id="7_tx5f1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v44k4"]
+texture = ExtResource("4_te12l")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yutn8"]
+texture = ExtResource("4_te12l")
+modulate_color = Color(0.273777, 0.469783, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v8g0a"]
+texture = ExtResource("4_te12l")
+modulate_color = Color(0.503547, 0.643658, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ty5m"]
+texture = ExtResource("4_te12l")
+
+[node name="Level 1" type="Node2D" node_paths=PackedStringArray("ready_panel_father", "ready_panel", "pause_panel_father", "pause_panel", "bar_timer", "players_node")]
+process_mode = 1
+script = ExtResource("1_3vajg")
+ready_panel_father = NodePath("CanvasLayer/Panel_Ready")
+ready_panel = NodePath("CanvasLayer/Panel_Ready/Ready")
+pause_panel_father = NodePath("CanvasLayer/Panel_Opciones")
+pause_panel = NodePath("CanvasLayer/Panel_Opciones/Panel_Opciones")
+bar_timer = NodePath("CanvasLayer/Time_Out_Meter")
+players_node = NodePath("Players")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Players" type="Marker2D" parent="."]
+position = Vector2(-462, 89)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_ae27a")
+format = 2
+layer_0/tile_data = PackedInt32Array(196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 65535, 65536, 0, 131071, 65536, 0, 131070, 0, 0, 131069, 65536, 0, 131068, 65536, 0, 131067, 65536, 0, 65531, 65536, 0, -5, 65536, 0, -4, 65536, 0, 65532, 65536, 0, 65533, 65536, 0, 65534, 0, 0, -2, 65536, 0, -65538, 65536, 0, -65539, 65536, 0, -3, 65536, 0, -65540, 65536, 0, -65541, 65536, 0, -131076, 65536, 0, -131075, 65536, 0, -131074, 65536, 0, -131077, 65536, 0, -131073, 65536, 0, -196608, 65536, 0, -65537, 65536, 0, -1, 65536, 0, -65536, 65536, 0, 0, 65536, 0, 65536, 65536, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 65539, 65536, 0, 3, 65536, 0, -65533, 65536, 0, -131069, 65536, 0, -131070, 65536, 0, -196606, 65536, 0, -196614, 0, 0, -131078, 0, 0, -65542, 0, 0, -6, 0, 0, 65530, 0, 0, 131066, 0, 0, 196602, 0, 0, -196613, 65536, 0, -196612, 65536, 0, -196611, 65536, 0, -196610, 65536, 0, -196609, 65536, 0, -262144, 65536, 0, -131072, 65536, 0, -262143, 65536, 0, -196607, 65536, 0, -131071, 65536, 0, -65535, 0, 0, 1, 65536, 0, 65537, 65536, 0, -262142, 65536, 0, -65534, 0, 0, 2, 65536, 0, 65538, 65536, 0, -262141, 65536, 0, -196605, 65536, 0, -262140, 65536, 0, -196604, 65536, 0, -131068, 65536, 0, -65532, 65536, 0, 4, 65536, 0, 65540, 65536, 0, 131076, 0, 0, 131077, 0, 0, 65541, 0, 0, 5, 0, 0, -65531, 0, 0, -131067, 0, 0, -196603, 0, 0, -262139, 0, 0, -327675, 0, 0, -327676, 0, 0, -327677, 0, 0, -327678, 0, 0, -327679, 0, 0, -327680, 0, 0, -262145, 0, 0, -262146, 0, 0, -262147, 0, 0, -262148, 0, 0, -262149, 0, 0, -262150, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="Opciones" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.44
+anchor_top = 0.004
+anchor_right = 0.495
+anchor_bottom = 0.101
+offset_left = 0.119965
+offset_top = -0.092
+offset_right = -0.240051
+offset_bottom = 0.0519943
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i5w2x")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_v44k4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yutn8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v8g0a")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0ty5m")
+text = "ESC"
+
+[node name="Time_Out_Meter" parent="CanvasLayer" instance=ExtResource("4_qcw7k")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 9.0
+offset_top = 28.5
+offset_right = 74.0
+offset_bottom = 94.5
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Panel_Ready" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.499
+anchor_bottom = 0.5
+offset_right = 0.151978
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ready" parent="CanvasLayer/Panel_Ready" instance=ExtResource("3_0yvqm")]
+layout_mode = 1
+offset_left = 86.0
+offset_top = 90.0
+offset_right = -63.0
+offset_bottom = -54.0
+
+[node name="Panel_Opciones" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_right = 0.497
+anchor_bottom = 0.5
+offset_right = 0.455994
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel_Opciones" parent="CanvasLayer/Panel_Opciones" instance=ExtResource("7_tx5f1")]
+layout_mode = 1
+offset_left = 88.0
+offset_top = 66.0
+offset_right = -58.0
+offset_bottom = -44.0
+
+[connection signal="pressed" from="CanvasLayer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="continuar" from="CanvasLayer/Panel_Opciones/Panel_Opciones" to="." method="_on_panel_opciones_continuar"]
+[connection signal="reiniciar" from="CanvasLayer/Panel_Opciones/Panel_Opciones" to="." method="_on_panel_opciones_reiniciar"]

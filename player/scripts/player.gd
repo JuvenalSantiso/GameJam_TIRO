@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var action_area: CollisionShape2D = $ActionArea/CollisionShape2D
 @onready var visual_player = $VisualPlayer
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -685.0
 const PUSH_FORCE = 90000
@@ -58,7 +57,6 @@ func reset_player():
 	is_grabbable = false
 	is_grabbing = false
 	grabbed_box = null
-
 
 func read_from_player(delta) -> void:
 	var action = buffer_actions.init_capture_input()
@@ -157,11 +155,9 @@ func _physics_process(delta):
 	else: 
 		read_from_buffer(delta)
 
-
 func _on_action_area_body_entered(body):
 	if body.is_in_group("boxes"):
 		grabbed_box = body
-
 
 func _on_action_area_body_exited(body):
 	if body.is_in_group("boxes") and not is_sticking:
@@ -169,9 +165,8 @@ func _on_action_area_body_exited(body):
 		grabber_box = null
 		is_grabbable = false
 
-
 func _on_action_area_area_entered(area):
 	if area.is_in_group("grabber_box"):
 		grabber_box = area
 		is_grabbable = true
-	
+

@@ -1538,71 +1538,71 @@ metadata/_edit_group_ = true
 
 [node name="BackArm" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(9.65527, -140.059)
-rotation = -3.027
+position = Vector2(10.121, -138.53)
+rotation = 3.13941
 scale = Vector2(0.999524, 0.999524)
 texture = ExtResource("1_pem0p")
 
 [node name="BackHand" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(20.0229, -110.032)
-rotation = 2.37262
+position = Vector2(20.3176, -106.667)
+rotation = 2.52587
 scale = Vector2(0.999391, 0.999391)
 texture = ExtResource("2_3tq5v")
 
 [node name="BackLeg" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
-position = Vector2(11.7599, -72.416)
-rotation = -0.105324
+position = Vector2(11.9931, -71.287)
+rotation = -0.19891
 scale = Vector2(0.999525, 0.999525)
 texture = ExtResource("3_f6dle")
 
 [node name="BackFeet" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
-position = Vector2(17.2603, -26.4654)
-rotation = -0.125282
+position = Vector2(19.0504, -25.7182)
+rotation = -0.112168
 scale = Vector2(0.999387, 0.999387)
 texture = ExtResource("4_gujwk")
 
 [node name="Body" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.117647, 0.117647, 0.117647, 1)
-position = Vector2(0.942505, -125.929)
+position = Vector2(-0.921082, -124.531)
 scale = Vector2(0.99968, 0.99968)
 texture = ExtResource("5_p6wsm")
 
 [node name="Leg" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.137255, 0.137255, 0.137255, 1)
-position = Vector2(-10.2285, -70.923)
-rotation = 0.0166051
-scale = Vector2(0.999529, 0.999529)
+position = Vector2(-9.46326, -69.6684)
+rotation = -0.108737
+scale = Vector2(0.99953, 0.99953)
 texture = ExtResource("3_f6dle")
 
 [node name="Feet" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.137255, 0.137255, 0.137255, 1)
-position = Vector2(-12.9003, -25.8976)
-rotation = 0.0875443
-scale = Vector2(0.999382, 0.999382)
+position = Vector2(-11.7926, -25.1386)
+rotation = 0.174898
+scale = Vector2(0.999383, 0.999383)
 texture = ExtResource("4_gujwk")
 
 [node name="Arm" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.176471, 0.176471, 0.176471, 1)
-position = Vector2(-19.8683, -141.593)
-rotation = 0.417657
+position = Vector2(-19.881, -139.475)
+rotation = 0.3131
 scale = Vector2(0.999529, 0.999529)
 texture = ExtResource("1_pem0p")
 
 [node name="Hand" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.176471, 0.176471, 0.176471, 1)
-position = Vector2(-18.4774, -109.98)
-rotation = 2.57186
+position = Vector2(-19.5368, -105.655)
+rotation = 2.76356
 scale = Vector2(0.999386, 0.999386)
 texture = ExtResource("2_3tq5v")
 
 [node name="HeadBomb" type="Sprite2D" parent="PartsSkeletonContainer/Parts"]
 self_modulate = Color(0.118581, 0.118581, 0.118581, 1)
-position = Vector2(2.59436, -198.775)
-rotation = 0.0948864
-scale = Vector2(0.999509, 0.999509)
+position = Vector2(2.40204, -197.167)
+rotation = 0.155083
+scale = Vector2(0.999508, 0.999508)
 texture = ExtResource("6_pxjmi")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="PartsSkeletonContainer"]
@@ -1624,7 +1624,7 @@ metadata/_edit_lock_ = true
 
 [node name="Head" type="Bone2D" parent="PartsSkeletonContainer/Skeleton2D/Base/Body"]
 position = Vector2(-1, -84)
-scale = Vector2(0.999829, 0.999829)
+scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(0.995613, 0.0928735, -0.0928735, 0.995613, -1, -84)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1753,4 +1753,4 @@ autoplay = "Runnung"
 tree_root = SubResource("AnimationNodeStateMachine_eca71")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Push/blend_position = -0.196899
-parameters/Walk/WalkSpeed/blend_amount = 0
+parameters/Walk/WalkSpeed/blend_amount = 0.0

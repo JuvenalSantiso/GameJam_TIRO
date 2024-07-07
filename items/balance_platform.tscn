@@ -1,56 +1,67 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxe5b5m7by8xe"]
 
-[ext_resource type="Texture2D" uid="uid://b00ayrckfkxdc" path="res://resources/platform.png" id="1_3gj61"]
 [ext_resource type="Script" path="res://items/balance_platform.gd" id="1_6ask8"]
-[ext_resource type="Texture2D" uid="uid://dn7tnd0wcg6ht" path="res://resources/joint.png" id="2_ewqus"]
+[ext_resource type="Texture2D" uid="uid://dq2loiiakkhxb" path="res://resources/items/Balancin.png" id="2_s1sfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qok6x"]
-size = Vector2(685.5, 15)
+size = Vector2(492, 61)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lgaix"]
-height = 698.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwyte"]
+size = Vector2(69, 503)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_av244"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niogq"]
+size = Vector2(20, 48)
 
 [node name="BalancePlatform" type="Node2D" groups=["seesaw"]]
 script = ExtResource("1_6ask8")
 
 [node name="A" type="RigidBody2D" parent="."]
 collision_layer = 16
-collision_mask = 19
+collision_mask = 275
 
-[node name="PinJoint2D" type="PinJoint2D" parent="A"]
-node_a = NodePath("..")
-node_b = NodePath("../../Base")
-disable_collision = false
-motor_enabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="A"]
-position = Vector2(0.431595, -1)
-scale = Vector2(0.673684, 0.112242)
-texture = ExtResource("1_3gj61")
+[node name="Balancin" type="Sprite2D" parent="A"]
+position = Vector2(0, 15)
+texture = ExtResource("2_s1sfe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A"]
-position = Vector2(0.25, -1)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_qok6x")
 
 [node name="DetectPlayer" type="Area2D" parent="A"]
+position = Vector2(0, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A/DetectPlayer"]
-position = Vector2(0, -1)
+position = Vector2(0.5, -14)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_lgaix")
+shape = SubResource("RectangleShape2D_mwyte")
 
 [node name="Base" type="StaticBody2D" parent="."]
 disable_mode = 1
-collision_layer = 16
-collision_mask = 16
+collision_layer = 128
+collision_mask = 0
 
-[node name="Joint" type="Sprite2D" parent="Base"]
-position = Vector2(0, 15)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_ewqus")
+[node name="PinJoint2D" type="PinJoint2D" parent="Base"]
+position = Vector2(0, -8)
+node_a = NodePath("../../A")
+node_b = NodePath("..")
+angular_limit_enabled = true
+angular_limit_lower = -1.0472
+angular_limit_upper = 1.0472
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
-position = Vector2(0, 20)
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_av244")
+
+[node name="Angle Limit" type="Node2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Angle Limit"]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Angle Limit/StaticBody2D"]
+position = Vector2(0, 65)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_niogq")

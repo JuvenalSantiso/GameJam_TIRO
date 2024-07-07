@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwe3utgk0dk30"]
+
+[ext_resource type="Texture2D" uid="uid://cfoa8qnhmdavl" path="res://resources/items/Salida.png" id="1_t3eg7"]
+[ext_resource type="FontFile" uid="uid://bpb422jwfg7b4" path="res://font/RubikSprayPaint-Regular.ttf" id="2_ldf74"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vnn50"]
+radius = 68.0294
+
+[node name="Exit" type="Area2D"]
+process_mode = 1
+collision_layer = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -21)
+texture = ExtResource("1_t3eg7")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -38.0
+offset_top = -83.0
+offset_right = 42.0
+offset_bottom = -60.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ldf74")
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3)
+shape = SubResource("CircleShape2D_vnn50")
