@@ -11,9 +11,11 @@ extends Node2D
 @export var bar_timer : Control
 
 @export var players_node : Node2D
+@export var exit_node: Node2D
 
 func _ready():
 	prepare_to_start()
+	exit_node.player_on_exit.connect(exit_arrived)
 	ready_panel.ready_to_start.connect(start_game)
 	bar_timer.level_timeout.connect(run_timeout)
 
@@ -28,12 +30,16 @@ func _physics_process(_delta):
 	if (not get_tree().paused and Input.is_action_just_pressed("restart")):
 		restart_game()
 
+func exit_arrived():
+	GameManager.change_scene(next_level)
+
 #region Control de flujo
 func start_game():
-	ready_panel_father.hide()
-	ready_panel.waiting_input = true
-	GameManager.init_game_manager(players_node)
-	get_tree().paused = false
+	if ready_panel_father.visible:
+		ready_panel_father.hide()
+		ready_panel.waiting_input = true
+		GameManager.init_game_manager(players_node)
+		get_tree().paused = false
 
 func run_timeout():
 	GameManager.next_generation()

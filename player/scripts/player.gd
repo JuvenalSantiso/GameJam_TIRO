@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var visual_player = $VisualPlayer
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -685.0
+const JUMP_VELOCITY = -700.0
 const PUSH_FORCE = 90000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
