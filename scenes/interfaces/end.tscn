@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1mndb2cq6gru"]
+
+[ext_resource type="Texture2D" uid="uid://c7s1rtgwyc5k8" path="res://resources/interface/Star-name.png" id="1_7xbnn"]
+[ext_resource type="FontFile" uid="uid://bpb422jwfg7b4" path="res://font/RubikSprayPaint-Regular.ttf" id="2_ilg4u"]
+[ext_resource type="Texture2D" uid="uid://bb88cdfitkdcn" path="res://resources/interface/Panel Basico.png" id="3_rgj1v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1a60j"]
+texture = ExtResource("3_rgj1v")
+
+[node name="End" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.500552, 0.986698, 1)
+polygon = PackedVector2Array(-1222, -743, -1239, 927, 1414, 918, 1334, -785)
+
+[node name="Star" type="Sprite2D" parent="."]
+position = Vector2(-6, -115)
+rotation = -0.408856
+scale = Vector2(0.824121, 0.824121)
+texture = ExtResource("1_7xbnn")
+
+[node name="e" type="Label" parent="Star"]
+offset_left = -131.793
+offset_top = -113.966
+offset_right = 119.207
+offset_bottom = -77.9657
+rotation = 0.374736
+scale = Vector2(1.14834, 1.63028)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ilg4u")
+theme_override_font_sizes/font_size = 23
+text = "GRACIAS POR JUGAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -190.0
+offset_top = 77.0
+offset_right = 166.0
+offset_bottom = 245.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1a60j")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ilg4u")
+theme_override_font_sizes/font_size = 28
+text = "Créditos:
+Juvenal Santiso
+Cristian Luis"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 228.0
+offset_top = 154.0
+offset_right = 456.0
+offset_bottom = 177.0
+rotation = -0.812707
+theme_override_fonts/font = ExtResource("2_ilg4u")
+theme_override_font_sizes/font_size = 18
+text = "Ghaphic design is my pasion"

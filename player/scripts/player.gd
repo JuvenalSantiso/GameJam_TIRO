@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -700.0
-const PUSH_FORCE = 90000
+var PUSH_FORCE = 90000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,6 +22,11 @@ var grabber_box: Area2D
 
 #region Visual
 func vision_direction(direction):
+	if is_sticking:
+		action_area.position.x = abs(action_area.position.x)
+		visual_player.scale.x = 1
+		return
+	
 	if direction < 0:
 		action_area.position.x = -abs(action_area.position.x)
 		visual_player.scale.x = -1

@@ -16,11 +16,11 @@ collision_mask = 19
 physics_material_override = SubResource("PhysicsMaterial_o0omq")
 script = ExtResource("1_bagee")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+[node name="free" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-102, -121, -121, -106, -121, 104, -106, 121, 105, 121, 121, 104, 121, -106, 107, -121)
 
 [node name="Grabber" type="Marker2D" parent="."]
-position = Vector2(-204, -8)
+position = Vector2(-204, 17)
 
 [node name="Area2D" type="Area2D" parent="Grabber" groups=["grabber_box"]]
 collision_layer = 8

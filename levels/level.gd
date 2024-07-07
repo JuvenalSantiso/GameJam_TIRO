@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var time_level : int = 5
+@export var push_player_force : float = 90000
 
 @export var next_level : String
 
@@ -38,7 +39,7 @@ func start_game():
 	if ready_panel_father.visible:
 		ready_panel_father.hide()
 		ready_panel.waiting_input = true
-		GameManager.init_game_manager(players_node)
+		GameManager.init_game_manager(players_node, push_player_force)
 		get_tree().paused = false
 
 func run_timeout():

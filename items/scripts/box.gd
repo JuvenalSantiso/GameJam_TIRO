@@ -29,7 +29,3 @@ func _ready():
 func _integrate_forces(_state):
 	apply_force(force)
 
-
-	
-
-

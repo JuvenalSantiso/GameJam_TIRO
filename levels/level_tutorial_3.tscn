@@ -1,0 +1,164 @@
+[gd_scene load_steps=17 format=3 uid="uid://b8tpakrnprdhf"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_8rn8w"]
+[ext_resource type="TileSet" uid="uid://bxqleb0xmp5ru" path="res://resources/tileset/tile_map_config.tres" id="2_uqaii"]
+[ext_resource type="Texture2D" uid="uid://bjhkmo5swsme3" path="res://resources/interface/Fondo Titulo.png" id="3_soo13"]
+[ext_resource type="FontFile" uid="uid://bpb422jwfg7b4" path="res://font/RubikSprayPaint-Regular.ttf" id="4_l8a8u"]
+[ext_resource type="PackedScene" uid="uid://dwe3utgk0dk30" path="res://items/exit.tscn" id="5_lpaj2"]
+[ext_resource type="Texture2D" uid="uid://csqtwvemiquf3" path="res://resources/interface/Botón Escape.png" id="6_3rn5x"]
+[ext_resource type="PackedScene" uid="uid://bjr7a3hoy6vj2" path="res://scenes/interfaces/time_out_meter.tscn" id="7_wgtms"]
+[ext_resource type="PackedScene" uid="uid://pc2388chrw1l" path="res://scenes/interfaces/ready.tscn" id="8_xdypn"]
+[ext_resource type="PackedScene" uid="uid://7hgcvhcbcxqk" path="res://levels/panel_opciones.tscn" id="9_1hsqt"]
+[ext_resource type="PackedScene" uid="uid://dhn20444pg50o" path="res://items/box.tscn" id="10_iqhqm"]
+[ext_resource type="PackedScene" uid="uid://bx4ujjoxindow" path="res://scenes/sound/music_background.tscn" id="11_gmnct"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_frg0o"]
+texture = ExtResource("3_soo13")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v44k4"]
+texture = ExtResource("6_3rn5x")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yutn8"]
+texture = ExtResource("6_3rn5x")
+modulate_color = Color(0.273777, 0.469783, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v8g0a"]
+texture = ExtResource("6_3rn5x")
+modulate_color = Color(0.503547, 0.643658, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ty5m"]
+texture = ExtResource("6_3rn5x")
+
+[node name="Tutorial 3" type="Node2D" node_paths=PackedStringArray("ready_panel_father", "ready_panel", "pause_panel_father", "pause_panel", "bar_timer", "players_node", "exit_node")]
+process_mode = 1
+script = ExtResource("1_8rn8w")
+next_level = "res://levels/start_menu/start_menu.tscn"
+ready_panel_father = NodePath("CanvasLayer/Panel_Ready")
+ready_panel = NodePath("CanvasLayer/Panel_Ready/Ready")
+pause_panel_father = NodePath("CanvasLayer/Panel_Opciones")
+pause_panel = NodePath("CanvasLayer/Panel_Opciones/Panel_Opciones")
+bar_timer = NodePath("CanvasLayer/Time_Out_Meter")
+players_node = NodePath("Players")
+exit_node = NodePath("Exit")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-381, 177)
+zoom = Vector2(0.68, 0.68)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_uqaii")
+format = 2
+layer_0/tile_data = PackedInt32Array(196603, 65536, 0, 196604, 65536, 0, 196605, 65536, 0, 196606, 65536, 0, 196607, 65536, 0, 65535, 65536, 0, 131071, 65536, 0, 131070, 65536, 0, 131069, 65536, 0, 131068, 65536, 0, 131067, 65536, 0, 65531, 65536, 0, -5, 65536, 0, -4, 65536, 0, 65532, 65536, 0, 65533, 65536, 0, 65534, 65536, 0, -2, 65536, 0, -65538, 0, 0, -65539, 0, 0, -3, 65536, 0, -65540, 0, 0, -65541, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131077, 0, 0, -131073, 0, 0, -196608, 0, 0, -65537, 0, 0, -1, 65536, 0, -65536, 65536, 0, 0, 65536, 0, 65536, 65536, 0, 131072, 65536, 0, 131073, 65536, 0, -131078, 0, 0, -65542, 0, 0, -6, 65536, 0, 65530, 65536, 0, 131066, 65536, 0, 196602, 65536, 0, -131072, 0, 0, -196607, 0, 0, -131071, 0, 0, -65535, 65536, 0, 1, 65536, 0, 65537, 65536, 0, -131079, 0, 0, -65543, 0, 0, 262137, 65536, 0, 262138, 65536, 0, 262139, 65536, 0, 262140, 65536, 0, 262141, 65536, 0, 262142, 65536, 0, 262143, 65536, 0, 196608, 65536, 0, 196609, 65536, 0, 262145, 0, 0, 262144, 0, 0, 327679, 0, 0, 327678, 0, 0, 327677, 0, 0, 327676, 0, 0, 327675, 0, 0, 327674, 0, 0, 327673, 0, 0, 327672, 0, 0, 262136, 65536, 0, 196600, 65536, 0, 131064, 65536, 0, 65528, 65536, 0, 65527, 0, 0, -9, 0, 0, -65545, 0, 0, -65544, 0, 0, -131080, 0, 0, -131081, 0, 0, -8, 65536, 0, 131063, 0, 0, 196599, 0, 0, 262135, 0, 0, 327671, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 131065, 65536, 0, 65529, 65536, 0, -7, 65536, 0, 196601, 65536, 0, -131082, 0, 0, -65546, 0, 0, -10, 0, 0, 65526, 0, 0, 131062, 0, 0, 196598, 0, 0, 262134, 0, 0, 327670, 0, 0, 393206, 0, 0, -131083, 0, 0, -65547, 0, 0, -11, 0, 0, 65525, 0, 0, 131061, 0, 0, 196597, 0, 0, 262133, 0, 0, 327669, 0, 0, 393205, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, -65534, 0, 0, 2, 0, 0, 65538, 0, 0, 196610, 0, 0, -65533, 0, 0, 3, 0, 0, 65539, 0, 0, 196611, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 196612, 0, 0, -65531, 0, 0, 5, 0, 0, 65541, 0, 0, 131077, 0, 0, 196613, 0, 0, -196606, 0, 0, -131070, 0, 0, -196605, 0, 0, -131069, 0, 0, -196604, 0, 0, -131068, 0, 0, -196603, 0, 0, -131067, 0, 0, 262146, 0, 0, 327682, 0, 0, 262147, 0, 0, 327683, 0, 0, 262148, 0, 0, 327684, 0, 0, 262149, 0, 0, 327685, 0, 0, -131085, 0, 0, -65549, 0, 0, -13, 0, 0, 65523, 0, 0, 131059, 0, 0, 196595, 0, 0, 262131, 0, 0, 327667, 0, 0, 393203, 0, 0, -131084, 0, 0, -65548, 0, 0, -12, 0, 0, 65524, 0, 0, 131060, 0, 0, 196596, 0, 0, 262132, 0, 0, 327668, 0, 0, 393204, 0, 0)
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -1145.0
+offset_top = -360.0
+offset_right = 196.0
+offset_bottom = 405.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_frg0o")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0265043
+anchor_top = -0.240523
+anchor_right = 0.207329
+anchor_bottom = -0.10719
+offset_left = 139.458
+offset_top = 483.0
+offset_right = 953.458
+offset_bottom = 558.0
+theme_override_fonts/font = ExtResource("4_l8a8u")
+theme_override_font_sizes/font_size = 26
+text = "Usa  [K] para agarrar o soltar una caja.
+Puedes empujar una  caja que hayas agarrado.
+Tus ecos también.
+3/3"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit" parent="." instance=ExtResource("5_lpaj2")]
+position = Vector2(13, 384)
+
+[node name="Players" type="Marker2D" parent="."]
+position = Vector2(-936, 340)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="Opciones" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.44
+anchor_top = 0.004
+anchor_right = 0.495
+anchor_bottom = 0.101
+offset_left = 0.119965
+offset_top = -0.092
+offset_right = -0.240051
+offset_bottom = 0.0519943
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_l8a8u")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_v44k4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yutn8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v8g0a")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0ty5m")
+text = "ESC"
+
+[node name="Time_Out_Meter" parent="CanvasLayer" instance=ExtResource("7_wgtms")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 9.0
+offset_top = 28.5
+offset_right = 74.0
+offset_bottom = 94.5
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Panel_Ready" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.499
+anchor_bottom = 0.5
+offset_right = 0.151978
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ready" parent="CanvasLayer/Panel_Ready" instance=ExtResource("8_xdypn")]
+layout_mode = 1
+offset_left = 86.0
+offset_top = 90.0
+offset_right = -63.0
+offset_bottom = -54.0
+
+[node name="Panel_Opciones" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_right = 0.497
+anchor_bottom = 0.5
+offset_right = 0.455994
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel_Opciones" parent="CanvasLayer/Panel_Opciones" instance=ExtResource("9_1hsqt")]
+layout_mode = 1
+offset_left = 88.0
+offset_top = 66.0
+offset_right = -58.0
+offset_bottom = -44.0
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Box" parent="Items" instance=ExtResource("10_iqhqm")]
+position = Vector2(-441, 387)
+
+[node name="Music Background" parent="." instance=ExtResource("11_gmnct")]
+
+[connection signal="pressed" from="CanvasLayer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="continuar" from="CanvasLayer/Panel_Opciones/Panel_Opciones" to="." method="_on_panel_opciones_continuar"]
+[connection signal="reiniciar" from="CanvasLayer/Panel_Opciones/Panel_Opciones" to="." method="_on_panel_opciones_reiniciar"]

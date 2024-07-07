@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="TIRO"
-run/main_scene="res://ui/main_menu.tscn"
+run/main_scene="res://levels/start_menu/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://globals/GameManager.gd"
+
+[debug]
+
+gdscript/warnings/integer_division=0
 
 [display]
 

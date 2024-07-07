@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyr48cftvohcv"]
+[gd_scene load_steps=18 format=3 uid="uid://cyr48cftvohcv"]
 
 [ext_resource type="Script" path="res://levels/start_menu/start_menu.gd" id="1_fwe6p"]
 [ext_resource type="Texture2D" uid="uid://bqbaqhgw470ea" path="res://resources/interface/Run Gif SpriteSheet.png" id="1_rcwsn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://boi3o0b32kxkm" path="res://resources/interface/Boton Pressed.png" id="5_w82vo"]
 [ext_resource type="Texture2D" uid="uid://cra118kr1ixr5" path="res://resources/interface/Boton Focus.png" id="6_hrv6n"]
 [ext_resource type="Texture2D" uid="uid://bjhkmo5swsme3" path="res://resources/interface/Fondo Titulo.png" id="9_iuki1"]
+[ext_resource type="AudioStream" uid="uid://dqpm3wti2i1vd" path="res://sound/Lobby-Time(chosic.com).mp3" id="10_fo6n8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r4cfs"]
 particles_animation = true
@@ -197,6 +198,10 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ok4k7")
 theme_override_styles/focus = SubResource("StyleBoxTexture_eyl4y")
 text = "Tutorial
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fo6n8")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Panel/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Panel/Tutorial" to="." method="_on_tutorial_pressed"]

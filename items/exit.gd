@@ -4,5 +4,5 @@ signal player_on_exit
 
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	player_on_exit.emit()

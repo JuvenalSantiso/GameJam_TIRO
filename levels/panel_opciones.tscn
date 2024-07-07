@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://7hgcvhcbcxqk"]
+[gd_scene load_steps=16 format=3 uid="uid://7hgcvhcbcxqk"]
 
 [ext_resource type="Texture2D" uid="uid://bb88cdfitkdcn" path="res://resources/interface/Panel Basico.png" id="1_4xbnv"]
 [ext_resource type="Script" path="res://levels/panel_opciones.gd" id="2_7xspt"]
@@ -23,6 +23,10 @@ texture = ExtResource("5_wo3aw")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crpkl"]
 texture = ExtResource("6_4sihq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4k14"]
+texture = ExtResource("3_mt8gu")
+modulate_color = Color(0.288518, 0.288518, 0.288518, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5hnf"]
 texture = ExtResource("7_6vudl")
@@ -75,6 +79,7 @@ theme_override_fonts/font = ExtResource("2_akqcq")
 theme_override_styles/normal = SubResource("StyleBoxTexture_gyil7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ffx2g")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bhugb")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_w4k14")
 theme_override_styles/focus = SubResource("StyleBoxTexture_crpkl")
 text = "Reiniciar"
 

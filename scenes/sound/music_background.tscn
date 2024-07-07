@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx4ujjoxindow"]
+
+[ext_resource type="AudioStream" uid="uid://b6gblhiraq6oo" path="res://sound/Clown(chosic.com).mp3" id="1_p7crp"]
+
+[node name="Music Background" type="Node"]
+process_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_p7crp")
+volume_db = -15.0
+autoplay = true
