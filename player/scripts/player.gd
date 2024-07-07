@@ -38,17 +38,19 @@ func set_animation_state(direction: float, jump: bool):
 	if is_death:
 		self.modulate.a = 0.5
 	
+	if is_sticking:
+		visual_player.set_push_state()
+		visual_player.set_push_state_speed(direction)
+		return 
+	
 	if (jump):
-		visual_player.set_jump_state()
+		visual_player.set_jump_state()	
 	elif not is_on_floor():
 		if velocity.y < 0 :
 			visual_player.set_air_down_state()
 	else:
 		if visual_player.is_air_state():
 			visual_player.set_landing_state()
-		elif is_sticking:
-			visual_player.set_push_state()
-			visual_player.set_push_state_speed(direction)
 		else:
 			visual_player.set_move_state()
 			visual_player.set_move_state_speed(abs(direction))

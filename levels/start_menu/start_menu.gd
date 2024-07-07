@@ -4,7 +4,6 @@ extends Node2D
 var level_1_scene: String = "res://levels/level_1.tscn"
 var level_tutorial_scene: String = "res://levels/level_tutorial_1.tscn"
 
-
 func _on_start_pressed():
 	GameManager.change_scene(level_1_scene)
 

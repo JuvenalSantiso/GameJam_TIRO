@@ -50,6 +50,7 @@ func restart_game():
 	GameManager.restart_level_manager()
 	get_tree().paused = true
 	ready_panel_father.show()
+	ready_panel.waiting_input = true
 	bar_timer.set_parameters(time_level)
 #endregion
 
